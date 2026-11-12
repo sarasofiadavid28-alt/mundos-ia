@@ -1,14 +1,14 @@
 {
   "name": "mundos-ia",
   "version": "1.0.0",
-  "main": "index.js",
+  "description": "Programa de consola que genera bocetos visuales de mundos imaginarios con IA de texto e imagen",
+  "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node src/index.js"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["ia", "mundos", "imagenes", "fetch", "node"],
+  "author": "Tu Nombre",
   "license": "ISC",
-  "description": "",
   "dependencies": {
     "object-hash": "^3.0.0"
   }
