@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const { explicarError } = require('./errores');
 
 // Cargar las variables del .env
 process.loadEnvFile(path.join(__dirname, '..', '.env'));
@@ -41,8 +42,8 @@ async function main() {
     }
 
     console.log('Listo. Revisa la carpeta imagenes/');
-  } catch (error) {
-    console.error(error.message);
+    } catch (error) {
+    console.error(explicarError(error));
     process.exitCode = 1;
   }
 }

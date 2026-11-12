@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const { errorDeRespuesta } = require('./errores');
 
 const CARPETA_IMAGENES = path.join(__dirname, '..', 'imagenes');
 
@@ -20,8 +21,8 @@ async function generarImagen(descripcion) {
     signal: AbortSignal.timeout(60000),
   });
 
-  if (!respuesta.ok) {
-    throw new Error(`El servicio de imágenes respondió con el estado ${respuesta.status}.`);
+   if (!respuesta.ok) {
+    throw errorDeRespuesta(respuesta, 'imágenes');
   }
 
   const datos = await respuesta.json();

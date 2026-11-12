@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const { errorDeRespuesta } = require('./errores');
 
 const CARPETA_DESCRIPCIONES = path.join(__dirname, '..', 'descripciones');
 
@@ -34,10 +35,10 @@ async function describirMundo(mundo) {
     signal: AbortSignal.timeout(30000),
   });
 
-  if (!respuesta.ok) {
-    throw new Error(`El servicio de texto respondió con el estado ${respuesta.status}.`);
+    if (!respuesta.ok) {
+    throw errorDeRespuesta(respuesta, 'texto');
   }
-
+  
   const datos = await respuesta.json();
   let texto = (datos.choices?.[0]?.message?.content ?? '').trim();
 
