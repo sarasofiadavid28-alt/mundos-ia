@@ -24,12 +24,12 @@ Forma de trabajo: la IA propuso avanzar parte por parte. En cada paso yo ejecuta
 1. Cambié el servicio de imágenes de NVIDIA a Cloudflare porque NVIDIA no respondió (timeout de 60 s y `curl` con estado 000). Creé la cuenta, el token y puse el Account ID en la URL del `.env`.
 2. Corregí el `.gitignore` (estaba vacío al hacer el primer commit) y saqué `.env` y `node_modules` del repositorio con `git rm -r --cached`, porque `git ls-files` mostró que se habían subido.
 3. Revisé el error 401 que daba la imagen y descubrí que el `.env` todavía tenía la URL de NVIDIA con el token de Cloudflare; cambié la URL con el Account ID correcto.
-4. Provoqué tres errores a propósito (clave inválida, URL mal escrita y timeout), tomé capturas y dejé todo restaurado. **(confirma o agrega un cambio propio, por ejemplo en tu mensaje de sistema)**
+4. Provoqué tres errores a propósito (clave inválida, URL mal escrita y timeout), tomé capturas y dejé todo restaurado. 
 
 ## F. Una línea de código que no entendía
 Línea: `const textoBase64 = datos.result?.image;`
 
-Explicación con mis palabras: **(confirma y reescribe a tu manera)** Cloudflare devuelve un JSON con una parte llamada `result`, y dentro está la imagen en base64. El `?.` sirve para que, si `result` no existe (por ejemplo, por un error), el programa no se caiga con un error técnico, sino que `textoBase64` quede vacío y yo pueda mostrar un mensaje claro.
+Explicación con mis palabras:  Cloudflare devuelve un JSON con una parte llamada `result`, y dentro está la imagen en base64. El `?.` sirve para que, si `result` no existe (por ejemplo, por un error), el programa no se caiga con un error técnico, sino que `textoBase64` quede vacío y yo pueda mostrar un mensaje claro.
 
 ## G. Un error y cómo lo resolví
 Mensaje de error: `Additional or unevaluated properties '/width, /height, /seed' at '/' not allowed` (estado 400 de Cloudflare).
